@@ -4,9 +4,9 @@ interface IProps {
 
 const PokemonItem: React.FC<IProps> = ({ name }) => {
   return (
-    <div>
+    <>
       <h2>{name}</h2>
-    </div>
+    </>
   );
 };
 
