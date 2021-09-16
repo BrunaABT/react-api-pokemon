@@ -29,12 +29,16 @@ function Home() {
 
   return (
     <div className={styles.container}>
-      <img src={PokemonLogo} alt="Pokemon Logo" className={styles.logo} />
-      <PokemonItem name="pikachu" />
-      <PokemonItem name="charmander" />
-      <PokemonItem name="bulbassauro" />
-      <PokemonItem name="dito" />
-      <PokemonItem name="delibird" />
+      <img
+        src={PokemonLogo}
+        alt="Pokemon Logo"
+        className={styles.logo}
+        onClick={() => getAllPokemons()}
+      />
+      {pokemons?.map((pokemon, index) => (
+        //index pra ter um valor único
+        <PokemonItem name={pokemon.name} key={index} />
+      ))}
     </div>
   );
 }
