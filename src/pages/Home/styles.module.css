@@ -5,3 +5,9 @@
 .logo {
   width: 300px;
 }
+
+.loading {
+  font-size: 40px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
