@@ -4,7 +4,7 @@ import api from "../../services/api";
 import styles from "./styles.module.css";
 
 interface IPokemon {
-  abilites: { ability: { name: string } }[];
+  abilities: { ability: { name: string } }[];
   height: number;
   name: string;
   weight: number;
@@ -17,7 +17,7 @@ interface IParams {
 }
 
 const Pokemon: React.FC = () => {
-  const [pokemon, setPokemon] = useState();
+  const [pokemon, setPokemon] = useState<IPokemon>();
   const { pokemon: pokemonName } = useParams<IParams>();
 
   const getPokemonInfo = async () => {
@@ -30,7 +30,19 @@ const Pokemon: React.FC = () => {
     getPokemonInfo();
   }, []);
 
-  return <h1>Página do Pokemon: {pokemonName}</h1>;
+  return (
+    <div className={styles.container}>
+      <h1>{pokemon?.name}</h1>
+      <img src={pokemon?.sprites.other.dream_world.front_default} alt="" />
+      <h2>Height: {pokemon?.height} pounds</h2>
+      <h2>Weigth: {pokemon?.weight} lb</h2>
+      <h2>Type: {pokemon?.types.map((type) => type.type.name).join(", ")}</h2>
+      <h2>
+        Abilites:{" "}
+        {pokemon?.abilities.map((ability) => ability.ability.name).join(", ")}
+      </h2>
+    </div>
+  );
 };
 
 export default Pokemon;
