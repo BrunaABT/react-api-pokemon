@@ -1,15 +1,12 @@
 .background {
-  margin: 0 auto;
+  margin: 20px auto;
   background-color: yellow;
   width: 200px;
   border-radius: 6px;
   text-align: center;
   padding: 10px 0;
   cursor: pointer;
-}
-
-.background + .background {
-  margin-top: 20px;
+  color: black;
 }
 
 .name {

@@ -1,5 +1,6 @@
 import api from "../../services/api";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import PokemonItem from "../../components/PokemonItem";
 import PokemonLogo from "../../assets/images/pokemon.png";
@@ -36,7 +37,9 @@ function Home() {
       <img src={PokemonLogo} alt="Pokemon Logo" className={styles.logo} />
       {pokemons ? (
         pokemons.map((pokemon) => (
-          <PokemonItem name={pokemon.name} key={pokemon.name} />
+          <Link to={`/${pokemon.name}`} key={pokemon.name}>
+            <PokemonItem name={pokemon.name} />
+          </Link>
         ))
       ) : (
         <h1 className={styles.loading}>Carregando...</h1>
