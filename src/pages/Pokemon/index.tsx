@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import api from "../../services/api";
 import styles from "./styles.module.css";
 
@@ -32,15 +32,27 @@ const Pokemon: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <h1>{pokemon?.name}</h1>
-      <img src={pokemon?.sprites.other.dream_world.front_default} alt="" />
-      <h2>Height: {pokemon?.height} pounds</h2>
-      <h2>Weigth: {pokemon?.weight} lb</h2>
-      <h2>Type: {pokemon?.types.map((type) => type.type.name).join(", ")}</h2>
-      <h2>
-        Abilites:{" "}
-        {pokemon?.abilities.map((ability) => ability.ability.name).join(", ")}
-      </h2>
+      <div className={styles.card}>
+        <h1 className={styles.title}>{pokemon?.name}</h1>
+        <img
+          className={styles.img}
+          src={pokemon?.sprites.other.dream_world.front_default}
+          alt=""
+        />
+        <h2 className={styles.line}>Height: {pokemon?.height} pounds</h2>
+        <h2 className={styles.line}>Weigth: {pokemon?.weight} lb</h2>
+        <h2 className={styles.line}>
+          Type: {pokemon?.types.map((type) => type.type.name).join(", ")}
+        </h2>
+        <h2 className={styles.line}>
+          Abilites:{" "}
+          {pokemon?.abilities.map((ability) => ability.ability.name).join(", ")}
+        </h2>
+
+        <Link to="/">
+          <button className={styles.button}>Menu</button>
+        </Link>
+      </div>
     </div>
   );
 };
